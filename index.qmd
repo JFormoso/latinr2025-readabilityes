@@ -1,0 +1,367 @@
+---
+title: "readabilityes"
+subtitle: "Cálculo reproducible de métricas de legibilidad en español"
+format: clean-revealjs
+embed-resources: true
+author:
+  - name: Jesica Formoso
+    email: jformoso@conicet.gov.ar
+    affiliations: CIIPME-CONICET
+  - name: Sofía Ortiz
+    affiliations: CIIPME-CONICET
+  - name: Brenda Gomez Muiño
+    affiliations: Facultad de Psicología | UBA
+  - name: Juan Pablo Barreyro
+    affiliations: CIIPME-CONICET
+---
+
+
+## ¡Hola!👋 Soy Jésica
+
+- Psicóloga cognitiva, Dra. por la Universidad de Buenos Aires (UBA) 
+- Investigadora de CONICET en el Centro Interdisciplinario de Investigaciones en Psicología Matemática y Experimental (CIIPME) 
+- Co-organzadora de R-Ladies Buenos Aires y parte de R-Ladies global 
+- Coordinadora de medicición de impacto en MetaDocencia 🍎
+
+## 
+
+### Equipo
+
+:::: {.columns}
+
+::: {.column width="33%"}
+
+<div style="text-align:center;">
+
+  <img src="img/juan.jpeg" style="border-radius:1em; width:200px;">
+
+  <p style="font-size:0.6em; margin-top:0.5em;">
+    <strong>Juan Pablo Barreyro</strong><br>
+    Dr. en Psicología, UBA<br>
+    Investigador Independiente<br>
+    CONICET
+  </p>
+
+</div>
+
+:::
+
+::: {.column width="33%"}
+
+<div style="text-align:center;">
+
+  <img src="img/sofi.png" style="border-radius:1em; width:200px; height:200px; object-fit:cover;">
+
+  <p style="font-size:0.6em; margin-top:0.5em;">
+    <strong>Sofía Ortiz</strong><br>
+    Lic. en Psicología, UBA<br>
+    Becaria doctoral<br>
+    CONICET<br>
+  </p>
+
+</div>
+
+:::
+
+::: {.column width="33%"}
+
+<div style="text-align:center;">
+
+  <img src="img/bren.jpeg" style="border-radius:1em; width:200px;">
+
+  <p style="font-size:0.6em; margin-top:0.5em;">
+    <strong>Brenda Gomez Muiño</strong><br>
+    Lic. en Psicología, UBA<br>
+    <br>
+    <br>
+  </p>
+
+</div>
+
+:::
+
+::::
+
+## **¿Qué es la legibilidad?**
+
+
+- Propiedad del texto que indica la facilidad con la que este puede ser comprendido por quien lo lee (Flesch, 1974)
+
+- Qué tan rápidamente y con cuánta comodidad una persona puede procesar el contenido.
+
+
+##
+
+**No tiene la misma dificultad una oración breve y directa...**
+
+
+> La programadora revisó el código antes de enviar la actualización.
+
+
+**que una en voz pasiva...**
+
+
+> El código fue revisado antes de la actualización por la programadora.
+
+
+## 
+
+**..o que una oración más larga, con palabras de menor frecuencia, y una clausula infinita.**
+
+<center>
+
+Después de haber depurado minuciosamente el módulo,
+que presentaba varias inconsistencias lógicas, 
+la programadora elaboró un informe detallado.
+
+
+</center>
+
+##
+
+### ¿Qué hace que un texto sea más difícil?
+
+- Complejidad léxica:
+     
+     - Palabras de baja frecuencia
+     - Palabras polisilábicas
+     - Gran diversidad en las palabras utilizadas
+     
+- Complejidad sintáctica:
+
+    - Oraciones extensas
+    - Presencia de subordinadas
+
+##
+
+### Índices de legibilidad
+
+:::: {.columns}
+
+::: {.column width="50%" .vcenter}
+
+
+
+- Buscan representar el grado de dificultad lingüística del texto mediante un número que sea fácil de calcular.
+
+- Intentan asociar el número con un nivel de dificultad y un nivel educativo particular.
+
+
+
+:::
+
+::: {.column width="50%"}
+
+![](img/Tabla-if.png)
+
+
+:::
+
+::::
+
+## 
+
+### Fórmula de Perpicuidad de Szigriszt y escala INFLESZ
+
+$$
+I = 206.835 
+- 62.3 \cdot \frac{\text{sílabas}}{\text{palabras}}
+- \frac{\text{palabras}}{\text{oraciones}}
+$$
+
+
+
+## 
+
+### Fórmula de Perpicuidad de Szigriszt y escala INFLESZ
+
+```{r, echo=FALSE}
+library(readabilityes)
+
+txt1 <- "Después de haber depurado minuciosamente el módulo,
+que presentaba varias inconsistencias lógicas, 
+la programadora elaboró un informe detallado."
+txt2 <- "La programadora revisó el código antes de enviar la actualización."
+txt3 <- "La veterinaria revisó al perrito antes de devolvérselo a la familia."
+
+oraciones1 <- readabilityes::count_sentences(txt1)
+oraciones2 <- readabilityes::count_sentences(txt2)
+oraciones3 <- readabilityes::count_sentences(txt3)
+
+silabas1 <- readabilityes::count_syllables(txt1)
+silabas2 <- readabilityes::count_syllables(txt2)
+silabas3 <- readabilityes::count_syllables(txt3)
+
+palabras1 <- count_words(txt1)
+palabras2 <- count_words(txt2)
+palabras3 <- count_words(txt3)
+
+inf1 <- readabilityes::inflesz(txt1)
+inf2 <- readabilityes::inflesz(txt2)
+inf3 <- readabilityes::inflesz(txt3)
+
+```
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<center>
+
+Después de haber depurado minuciosamente el módulo,
+que presentaba varias inconsistencias lógicas, 
+la programadora elaboró un informe detallado.
+
+</center>
+
+:::
+
+::: {.column width="50%"}
+
+- Cantidad de oraciones: **`r oraciones1`**
+- Cantidad de palabras: **`r palabras1`**
+- Cantidad de sílabas: **`r silabas1`**
+
+- Índice Flesch-Szigriszt: **`r round(inf1[[1]], 2)`**
+- Grado de dificultad según escala INFLESZ: **`r inf1[[2]]`**
+
+:::
+
+::::
+
+## 
+
+### Fórmula de Perpicuidad de Szigriszt y escala INFLESZ
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+La programadora revisó el código antes de enviar la actualización.
+
+:::
+
+::: {.column width="50%"}
+
+- Cantidad de oraciones: **`r oraciones2`**
+- Cantidad de palabras: **`r palabras2`**
+- Cantidad de sílabas: **`r silabas2`**
+
+- Índice Flesch-Szigriszt: **`r round(inf2[[1]], 2)`**
+- Grado de dificultad según escala INFLESZ: **`r inf2[[2]]`**
+
+:::
+
+::::
+
+## 
+
+### Fórmula de Perpicuidad de Szigriszt y escala INFLESZ
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+<center>
+
+La veterinaria revisó al perrito antes de devolvérselo a la familia.
+
+</center>
+
+:::
+
+::: {.column width="50%"}
+
+- Cantidad de oraciones: **`r oraciones3`**
+- Cantidad de palabras: **`r palabras3`**
+- Cantidad de sílabas: **`r silabas3`**
+
+- Índice Flesch-Szigriszt: **`r round(inf3[[1]], 2)`**
+- Grado de dificultad según escala INFLESZ: **`r inf3[[2]]`**
+
+:::
+
+::::
+
+## 
+
+### ¿Para qué se utilizan los índices de legibilidad?
+
+Permiten evaluar y adaptar textos que sean accesibles a audiencias con distintos niveles educativos o competencias lectoras.
+
+
+Puede aplicarse en múltiples ámbitos:
+
+- Educación
+- Medicina y salud pública
+- Ámbito legal y administrativo
+- Comunicación científica y divulgación
+
+
+## 
+
+### readabilityes (en desarrollo)
+
+Objetivos:
+
+- Tener una herramienta para calcular métricas de legibilidad tradicionales, que utilice silibificación mediante reglas propias del español, sin necesidad de dependencias externas ni modelos descargables.
+- Que facilite la reproducibilidad de los análisis. 
+- Que se integre de forma fluida con el ecosistema tidyverse.
+
+##
+
+### Dificultades para calcular legibilidad en español
+
+- Silabación: diptongos, triptongos, hiatos, vocales acentuadas, “y” vocálica.
+- Estructuras silábicas: grupos consonánticos, letras con diacríticos.
+- Ausencia de recursos libres fáciles de integrar en R.
+
+##
+
+## Cómo abordé el problema en readabilityES
+
+- Motor de silabificación propio con reglas adaptadas al español.
+- Tokenización y segmentación de oraciones sin dependencias externas.
+- Funciones que devuelven métricas básicas y índices de legibilidad listos para análisis.
+
+
+### Caso de uso
+
+
+
+```{r}
+library(readabilityes)
+library(tidyverse)
+
+txt <- text = c("El mercado agrícola local abrió hoy con precios estables, aunque los productores expresaron cierta incertidumbre por los recientes cambios climáticos. Aun así, la cosecha de la semana pasada mostró buenos rendimientos y despertó expectativas moderadamente optimistas.",
+         "El parque del barrio estaba lleno de familias que disfrutaban del sol. Los niños corrían entre los juegos mientras los adultos charlaban tranquilamente en los bancos.")
+
+segment_sentences(txt)
+
+tokenize_words(txt)
+
+count_syllables(txt)
+
+count_sentences(txt, drop_empty = TRUE)
+
+avg_syllables_per_word(txt)
+
+inflesz(txt)
+
+
+
+
+```
+
+## 
+
+### Próximos pasos
+
+- Incorporar análisis de vocabulario (frecuencia léxica).
+- Detección automática de pasivas y estructuras complejas.
+- Integración con anotadores gramaticales (udpipe).
+
+# Muchas gracias!
+
+- Links al paquete (GitHub) y contacto.
