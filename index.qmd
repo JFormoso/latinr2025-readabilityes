@@ -1,7 +1,9 @@
 ---
 title: "readabilityes"
 subtitle: "Cálculo reproducible de métricas de legibilidad en español"
-format: clean-revealjs
+format: 
+  clean-revealjs:
+    highlight-style: arrow
 embed-resources: true
 author:
   - name: Jesica Formoso
@@ -138,9 +140,9 @@ la programadora elaboró un informe detallado.
 
 :::: {.columns}
 
-::: {.column width="50%" .vcenter}
+::: {.column width="50%"}
 
-
+<br>
 
 - Buscan representar el grado de dificultad lingüística del texto mediante un número que sea fácil de calcular.
 
@@ -163,6 +165,8 @@ la programadora elaboró un informe detallado.
 
 ### Fórmula de Perpicuidad de Szigriszt y escala INFLESZ
 
+<br>
+<br>
 $$
 I = 206.835 
 - 62.3 \cdot \frac{\text{sílabas}}{\text{palabras}}
@@ -201,23 +205,25 @@ inf2 <- readabilityes::inflesz(txt2)
 inf3 <- readabilityes::inflesz(txt3)
 
 ```
-
+<br>
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="40%"}
+
+
 
 <center>
 
-Después de haber depurado minuciosamente el módulo,
-que presentaba varias inconsistencias lógicas, 
-la programadora elaboró un informe detallado.
+**Después de haber depurado minuciosamente el módulo, que presentaba varias inconsistencias lógicas, la programadora elaboró un informe detallado.**
 
 </center>
 
 :::
 
 ::: {.column width="50%"}
+
+
 
 - Cantidad de oraciones: **`r oraciones1`**
 - Cantidad de palabras: **`r palabras1`**
@@ -234,15 +240,23 @@ la programadora elaboró un informe detallado.
 
 ### Fórmula de Perpicuidad de Szigriszt y escala INFLESZ
 
+<br>
+
 :::: {.columns}
 
 ::: {.column width="40%"}
 
-La programadora revisó el código antes de enviar la actualización.
 
+
+<center>
+
+**La programadora revisó el código antes de enviar la actualización.**
+
+</center>
 :::
 
 ::: {.column width="50%"}
+
 
 - Cantidad de oraciones: **`r oraciones2`**
 - Cantidad de palabras: **`r palabras2`**
@@ -259,19 +273,23 @@ La programadora revisó el código antes de enviar la actualización.
 
 ### Fórmula de Perpicuidad de Szigriszt y escala INFLESZ
 
+<br>
+
 :::: {.columns}
 
 ::: {.column width="40%"}
 
+
 <center>
 
-La veterinaria revisó al perrito antes de devolvérselo a la familia.
+**La veterinaria revisó al perrito antes de devolvérselo a la familia.**
 
 </center>
 
 :::
 
 ::: {.column width="50%"}
+
 
 - Cantidad de oraciones: **`r oraciones3`**
 - Cantidad de palabras: **`r palabras3`**
@@ -319,27 +337,46 @@ Objetivos:
 
 ##
 
-## Cómo abordé el problema en readabilityES
+### Cómo abordé el problema en readabilityES
 
 - Motor de silabificación propio con reglas adaptadas al español.
 - Tokenización y segmentación de oraciones sin dependencias externas.
 - Funciones que devuelven métricas básicas y índices de legibilidad listos para análisis.
 
+## 
 
 ### Caso de uso
 
 
 
-```{r}
+```{r, echo=TRUE}
+#| code-overflow: wrap
+#| code-block-bg: true
+#| code-block-border-left: "#31BAE9"
+
 library(readabilityes)
 library(tidyverse)
 
-txt <- text = c("El mercado agrícola local abrió hoy con precios estables, aunque los productores expresaron cierta incertidumbre por los recientes cambios climáticos. Aun así, la cosecha de la semana pasada mostró buenos rendimientos y despertó expectativas moderadamente optimistas.",
+txt <- c("El mercado agrícola local abrió hoy con precios estables, aunque los productores expresaron cierta incertidumbre por los recientes cambios climáticos. Aun así, la cosecha de la semana pasada mostró buenos rendimientos y despertó expectativas moderadamente optimistas.",
          "El parque del barrio estaba lleno de familias que disfrutaban del sol. Los niños corrían entre los juegos mientras los adultos charlaban tranquilamente en los bancos.")
 
 segment_sentences(txt)
 
-tokenize_words(txt)
+
+```
+
+##
+
+```{r, echo=TRUE}
+palabras <- tokenize_words(txt)
+palabras[[1]]
+
+```
+
+##
+
+```{r, echo=TRUE}
+
 
 count_syllables(txt)
 
@@ -350,11 +387,44 @@ avg_syllables_per_word(txt)
 inflesz(txt)
 
 
+```
+
+
+
+## 
+
+```{r, echo=TRUE}
+
+df_txt <- data.frame(id_text = c("mercado_agricola", "parque_barrio"),
+                  text = c("El mercado agrícola local abrió hoy con precios estables, aunque los productores expresaron cierta incertidumbre por los recientes cambios climáticos. Aun así, la cosecha de la semana pasada mostró buenos rendimientos y despertó expectativas moderadamente optimistas.",
+         "El parque del barrio estaba lleno de familias que disfrutaban del sol. Los niños corrían entre los juegos mientras los adultos charlaban tranquilamente en los bancos."))
+
+readability_summary(df_txt) %>% 
+  mutate_if(is.numeric, round, 2)
+
+```
+
+##
+
+```{r, echo=TRUE}
+
+txt2 <- read_csv("textos.csv")
+
+readability_summary(txt2) %>%
+  mutate(inflesz_category = fct_relevel(inflesz_category, 
+                                        "Muy fácil",
+                                        "Normal",
+                                        "Algo difícil",
+                                        "Muy difícil")) %>%
+  ggplot(aes(x = inflesz_category)) +
+  geom_bar(fill = "#023e8a") +
+  theme_minimal()
 
 
 ```
 
-## 
+
+##
 
 ### Próximos pasos
 

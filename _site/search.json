@@ -1,0 +1,149 @@
+[
+  {
+    "objectID": "index.html#hola-soy-jésica",
+    "href": "index.html#hola-soy-jésica",
+    "title": "readabilityes",
+    "section": "¡Hola!👋 Soy Jésica",
+    "text": "¡Hola!👋 Soy Jésica\n\nPsicóloga cognitiva, Dra. por la Universidad de Buenos Aires (UBA)\nInvestigadora de CONICET en el Centro Interdisciplinario de Investigaciones en Psicología Matemática y Experimental (CIIPME)\nCo-organzadora de R-Ladies Buenos Aires y parte de R-Ladies global\nCoordinadora de medicición de impacto en MetaDocencia 🍎"
+  },
+  {
+    "objectID": "index.html#section",
+    "href": "index.html#section",
+    "title": "readabilityes",
+    "section": "",
+    "text": "Equipo\n\n\n\n\n\nJuan Pablo Barreyro Dr. en Psicología, UBA Investigador Independiente CONICET\n\n\n\n\n\n\nSofía Ortiz Lic. en Psicología, UBA Becaria doctoral CONICET\n\n\n\n\n\n\nBrenda Gomez Muiño Lic. en Psicología, UBA"
+  },
+  {
+    "objectID": "index.html#qué-es-la-legibilidad",
+    "href": "index.html#qué-es-la-legibilidad",
+    "title": "readabilityes",
+    "section": "¿Qué es la legibilidad?",
+    "text": "¿Qué es la legibilidad?\n\nPropiedad del texto que indica la facilidad con la que este puede ser comprendido por quien lo lee (Flesch, 1974)\nQué tan rápidamente y con cuánta comodidad una persona puede procesar el contenido."
+  },
+  {
+    "objectID": "index.html#section-1",
+    "href": "index.html#section-1",
+    "title": "readabilityes",
+    "section": "",
+    "text": "No tiene la misma dificultad una oración breve y directa…\n\nLa programadora revisó el código antes de enviar la actualización.\n\nque una en voz pasiva…\n\nEl código fue revisado antes de la actualización por la programadora."
+  },
+  {
+    "objectID": "index.html#section-2",
+    "href": "index.html#section-2",
+    "title": "readabilityes",
+    "section": "",
+    "text": "..o que una oración más larga, con palabras de menor frecuencia, y una clausula infinita.\n\nDespués de haber depurado minuciosamente el módulo, que presentaba varias inconsistencias lógicas, la programadora elaboró un informe detallado."
+  },
+  {
+    "objectID": "index.html#section-3",
+    "href": "index.html#section-3",
+    "title": "readabilityes",
+    "section": "",
+    "text": "¿Qué hace que un texto sea más difícil?\n\nComplejidad léxica:\n\nPalabras de baja frecuencia\nPalabras polisilábicas\nGran diversidad en las palabras utilizadas\n\nComplejidad sintáctica:\n\nOraciones extensas\nPresencia de subordinadas"
+  },
+  {
+    "objectID": "index.html#section-4",
+    "href": "index.html#section-4",
+    "title": "readabilityes",
+    "section": "",
+    "text": "Índices de legibilidad\n\n\n\n\nBuscan representar el grado de dificultad lingüística del texto mediante un número que sea fácil de calcular.\nIntentan asociar el número con un nivel de dificultad y un nivel educativo particular."
+  },
+  {
+    "objectID": "index.html#section-5",
+    "href": "index.html#section-5",
+    "title": "readabilityes",
+    "section": "",
+    "text": "Fórmula de Perpicuidad de Szigriszt y escala INFLESZ\n  \\[\nI = 206.835\n- 62.3 \\cdot \\frac{\\text{sílabas}}{\\text{palabras}}\n- \\frac{\\text{palabras}}{\\text{oraciones}}\n\\]"
+  },
+  {
+    "objectID": "index.html#section-6",
+    "href": "index.html#section-6",
+    "title": "readabilityes",
+    "section": "",
+    "text": "Fórmula de Perpicuidad de Szigriszt y escala INFLESZ\n\n\n\n\nDespués de haber depurado minuciosamente el módulo, que presentaba varias inconsistencias lógicas, la programadora elaboró un informe detallado.\n\n\n\nCantidad de oraciones: 1\nCantidad de palabras: 18\nCantidad de sílabas: 52\nÍndice Flesch-Szigriszt: 8.86\nGrado de dificultad según escala INFLESZ: Muy difícil"
+  },
+  {
+    "objectID": "index.html#section-7",
+    "href": "index.html#section-7",
+    "title": "readabilityes",
+    "section": "",
+    "text": "Fórmula de Perpicuidad de Szigriszt y escala INFLESZ\n\n\n\n\nLa programadora revisó el código antes de enviar la actualización.\n\n\n\nCantidad de oraciones: 1\nCantidad de palabras: 10\nCantidad de sílabas: 24\nÍndice Flesch-Szigriszt: 47.32\nGrado de dificultad según escala INFLESZ: Algo difícil"
+  },
+  {
+    "objectID": "index.html#section-8",
+    "href": "index.html#section-8",
+    "title": "readabilityes",
+    "section": "",
+    "text": "Fórmula de Perpicuidad de Szigriszt y escala INFLESZ\n\n\n\n\nLa veterinaria revisó al perrito antes de devolvérselo a la familia.\n\n\n\nCantidad de oraciones: 1\nCantidad de palabras: 11\nCantidad de sílabas: 26\nÍndice Flesch-Szigriszt: 48.58\nGrado de dificultad según escala INFLESZ: Algo difícil"
+  },
+  {
+    "objectID": "index.html#section-9",
+    "href": "index.html#section-9",
+    "title": "readabilityes",
+    "section": "",
+    "text": "¿Para qué se utilizan los índices de legibilidad?\nPermiten evaluar y adaptar textos que sean accesibles a audiencias con distintos niveles educativos o competencias lectoras.\nPuede aplicarse en múltiples ámbitos:\n\nEducación\nMedicina y salud pública\nÁmbito legal y administrativo\nComunicación científica y divulgación"
+  },
+  {
+    "objectID": "index.html#section-10",
+    "href": "index.html#section-10",
+    "title": "readabilityes",
+    "section": "",
+    "text": "readabilityes (en desarrollo)\nObjetivos:\n\nTener una herramienta para calcular métricas de legibilidad tradicionales, que utilice silibificación mediante reglas propias del español, sin necesidad de dependencias externas ni modelos descargables.\nQue facilite la reproducibilidad de los análisis.\nQue se integre de forma fluida con el ecosistema tidyverse."
+  },
+  {
+    "objectID": "index.html#section-11",
+    "href": "index.html#section-11",
+    "title": "readabilityes",
+    "section": "",
+    "text": "Dificultades para calcular legibilidad en español\n\nSilabación: diptongos, triptongos, hiatos, vocales acentuadas, “y” vocálica.\nEstructuras silábicas: grupos consonánticos, letras con diacríticos.\nAusencia de recursos libres fáciles de integrar en R."
+  },
+  {
+    "objectID": "index.html#section-12",
+    "href": "index.html#section-12",
+    "title": "readabilityes",
+    "section": "",
+    "text": "Cómo abordé el problema en readabilityES\n\nMotor de silabificación propio con reglas adaptadas al español.\nTokenización y segmentación de oraciones sin dependencias externas.\nFunciones que devuelven métricas básicas y índices de legibilidad listos para análisis."
+  },
+  {
+    "objectID": "index.html#section-13",
+    "href": "index.html#section-13",
+    "title": "readabilityes",
+    "section": "",
+    "text": "Caso de uso\n\nlibrary(readabilityes)\nlibrary(tidyverse)\n\ntxt &lt;- c(\"El mercado agrícola local abrió hoy con precios estables, aunque los productores expresaron cierta incertidumbre por los recientes cambios climáticos. Aun así, la cosecha de la semana pasada mostró buenos rendimientos y despertó expectativas moderadamente optimistas.\",\n         \"El parque del barrio estaba lleno de familias que disfrutaban del sol. Los niños corrían entre los juegos mientras los adultos charlaban tranquilamente en los bancos.\")\n\nsegment_sentences(txt)\n\n[[1]]\n[1] \"El mercado agrícola local abrió hoy con precios estables, aunque los productores expresaron cierta incertidumbre por los recientes cambios climáticos.\"\n[2] \"Aun así, la cosecha de la semana pasada mostró buenos rendimientos y despertó expectativas moderadamente optimistas.\"                                  \n\n[[2]]\n[1] \"El parque del barrio estaba lleno de familias que disfrutaban del sol.\"                         \n[2] \"Los niños corrían entre los juegos mientras los adultos charlaban tranquilamente en los bancos.\""
+  },
+  {
+    "objectID": "index.html#section-14",
+    "href": "index.html#section-14",
+    "title": "readabilityes",
+    "section": "",
+    "text": "palabras &lt;- tokenize_words(txt)\npalabras[[1]]\n\n [1] \"el\"            \"mercado\"       \"agrícola\"      \"local\"        \n [5] \"abrió\"         \"hoy\"           \"con\"           \"precios\"      \n [9] \"estables\"      \"aunque\"        \"los\"           \"productores\"  \n[13] \"expresaron\"    \"cierta\"        \"incertidumbre\" \"por\"          \n[17] \"los\"           \"recientes\"     \"cambios\"       \"climáticos\"   \n[21] \"aun\"           \"así\"           \"la\"            \"cosecha\"      \n[25] \"de\"            \"la\"            \"semana\"        \"pasada\"       \n[29] \"mostró\"        \"buenos\"        \"rendimientos\"  \"y\"            \n[33] \"despertó\"      \"expectativas\"  \"moderadamente\" \"optimistas\""
+  },
+  {
+    "objectID": "index.html#section-15",
+    "href": "index.html#section-15",
+    "title": "readabilityes",
+    "section": "",
+    "text": "count_syllables(txt)\n\n[1] 90 51\n\ncount_sentences(txt, drop_empty = TRUE)\n\n[1] 2 2\n\navg_syllables_per_word(txt)\n\n[1] 2.500000 1.961538\n\ninflesz(txt)\n\n     score    category\n1 33.08500 Muy difícil\n2 71.63115       Fácil"
+  },
+  {
+    "objectID": "index.html#section-16",
+    "href": "index.html#section-16",
+    "title": "readabilityes",
+    "section": "",
+    "text": "df_txt &lt;- data.frame(id_text = c(\"mercado_agricola\", \"parque_barrio\"),\n                  text = c(\"El mercado agrícola local abrió hoy con precios estables, aunque los productores expresaron cierta incertidumbre por los recientes cambios climáticos. Aun así, la cosecha de la semana pasada mostró buenos rendimientos y despertó expectativas moderadamente optimistas.\",\n         \"El parque del barrio estaba lleno de familias que disfrutaban del sol. Los niños corrían entre los juegos mientras los adultos charlaban tranquilamente en los bancos.\"))\n\nreadability_summary(df_txt) %&gt;% \n  mutate_if(is.numeric, round, 2)\n\n# A tibble: 2 × 8\n  id_text          n_words n_syllables n_sentences szigriszt_pazos inflesz_score\n  &lt;chr&gt;              &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;           &lt;dbl&gt;         &lt;dbl&gt;\n1 mercado_agricola      36          90           2            33.1          33.1\n2 parque_barrio         26          51           2            71.6          71.6\n# ℹ 2 more variables: inflesz_category &lt;ord&gt;, gutierrez_de_polini &lt;dbl&gt;"
+  },
+  {
+    "objectID": "index.html#section-17",
+    "href": "index.html#section-17",
+    "title": "readabilityes",
+    "section": "",
+    "text": "txt2 &lt;- read_csv(\"textos.csv\")\n\nreadability_summary(txt2) %&gt;%\n  mutate(inflesz_category = fct_relevel(inflesz_category, \n                                        \"Muy fácil\",\n                                        \"Normal\",\n                                        \"Algo difícil\",\n                                        \"Muy difícil\")) %&gt;%\n  ggplot(aes(x = inflesz_category)) +\n  geom_bar(fill = \"#023e8a\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "index.html#section-18",
+    "href": "index.html#section-18",
+    "title": "readabilityes",
+    "section": "",
+    "text": "Próximos pasos\n\nIncorporar análisis de vocabulario (frecuencia léxica).\nDetección automática de pasivas y estructuras complejas.\nIntegración con anotadores gramaticales (udpipe)."
+  }
+]
