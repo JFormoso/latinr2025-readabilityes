@@ -3,6 +3,16 @@ title: "readabilityes"
 subtitle: "Cálculo reproducible de métricas de legibilidad en español"
 format: 
   clean-revealjs:
+    include-in-header:
+      - text: |
+          <style>
+          .reveal .custom7030 > div.column:first-child {
+            width: 60%;
+          }
+          .reveal .custom7030 div.column:not(:first-child) {
+            width: 40%;
+          }
+          </style>
     highlight-style: arrow
 embed-resources: true
 author:
@@ -20,10 +30,36 @@ author:
 
 ## ¡Hola!👋 Soy Jésica
 
+
+
 - Psicóloga cognitiva, Dra. por la Universidad de Buenos Aires (UBA) 
 - Investigadora de CONICET en el Centro Interdisciplinario de Investigaciones en Psicología Matemática y Experimental (CIIPME) 
-- Co-organzadora de R-Ladies Buenos Aires y parte de R-Ladies global 
-- Coordinadora de medicición de impacto en MetaDocencia 🍎
+- Co-organizadora de R-Ladies Buenos Aires y parte de R-Ladies global 
+- Coordinadora de medicición de impacto en MetaDocencia 
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+![](img/ciipme.png)
+
+:::
+
+::: {.column width="30%"}
+
+![](img/rladies.png)
+
+:::
+
+::: {.column width="30%"}
+
+![](img/md.png)
+
+:::
+
+::::
+
+
 
 ## 
 
@@ -142,8 +178,6 @@ la programadora elaboró un informe detallado.
 
 ::: {.column width="50%"}
 
-<br>
-
 - Buscan representar el grado de dificultad lingüística del texto mediante un número que sea fácil de calcular.
 
 - Intentan asociar el número con un nivel de dificultad y un nivel educativo particular.
@@ -152,7 +186,7 @@ la programadora elaboró un informe detallado.
 
 :::
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 
 ![](img/Tabla-if.png)
 
@@ -185,24 +219,20 @@ library(readabilityes)
 txt1 <- "Después de haber depurado minuciosamente el módulo,
 que presentaba varias inconsistencias lógicas, 
 la programadora elaboró un informe detallado."
-txt2 <- "La programadora revisó el código antes de enviar la actualización."
-txt3 <- "La veterinaria revisó al perrito antes de devolvérselo a la familia."
+txt2 <- "La maestra nos leyó un cuento."
 
-oraciones1 <- readabilityes::count_sentences(txt1)
-oraciones2 <- readabilityes::count_sentences(txt2)
-oraciones3 <- readabilityes::count_sentences(txt3)
+oraciones1 <- count_sentences(txt1)
+oraciones2 <- count_sentences(txt2)
 
-silabas1 <- readabilityes::count_syllables(txt1)
-silabas2 <- readabilityes::count_syllables(txt2)
-silabas3 <- readabilityes::count_syllables(txt3)
+silabas1 <- count_syllables(txt1)
+silabas2 <- count_syllables(txt2)
 
 palabras1 <- count_words(txt1)
 palabras2 <- count_words(txt2)
-palabras3 <- count_words(txt3)
 
-inf1 <- readabilityes::inflesz(txt1)
-inf2 <- readabilityes::inflesz(txt2)
-inf3 <- readabilityes::inflesz(txt3)
+inf1 <- inflesz(txt1)
+inf2 <- inflesz(txt2)
+
 
 ```
 <br>
@@ -250,7 +280,7 @@ inf3 <- readabilityes::inflesz(txt3)
 
 <center>
 
-**La programadora revisó el código antes de enviar la actualización.**
+**La maestra nos leyó un cuento.**
 
 </center>
 :::
@@ -269,53 +299,31 @@ inf3 <- readabilityes::inflesz(txt3)
 
 ::::
 
-## 
-
-### Fórmula de Perpicuidad de Szigriszt y escala INFLESZ
-
-<br>
-
-:::: {.columns}
-
-::: {.column width="40%"}
-
-
-<center>
-
-**La veterinaria revisó al perrito antes de devolvérselo a la familia.**
-
-</center>
-
-:::
-
-::: {.column width="50%"}
-
-
-- Cantidad de oraciones: **`r oraciones3`**
-- Cantidad de palabras: **`r palabras3`**
-- Cantidad de sílabas: **`r silabas3`**
-
-- Índice Flesch-Szigriszt: **`r round(inf3[[1]], 2)`**
-- Grado de dificultad según escala INFLESZ: **`r inf3[[2]]`**
-
-:::
-
-::::
 
 ## 
 
 ### ¿Para qué se utilizan los índices de legibilidad?
 
-Permiten evaluar y adaptar textos que sean accesibles a audiencias con distintos niveles educativos o competencias lectoras.
+Permiten evaluar y adaptar textos para que sean accesibles a audiencias con distintos niveles educativos o competencias lectoras.
 
 
-Puede aplicarse en múltiples ámbitos:
+Pueden aplicarse a múltiples áreas:
 
 - Educación
 - Medicina y salud pública
 - Ámbito legal y administrativo
 - Comunicación científica y divulgación
 
+
+##
+
+### Dificultades para calcular legibilidad en español
+
+- Presenta particularidades fonológicas y ortográficas que dificultan la silibificación automática. 
+- Ausencia de recursos libres, fáciles de integrar en R.
+
+
+# readabilityes
 
 ## 
 
@@ -327,21 +335,19 @@ Objetivos:
 - Que facilite la reproducibilidad de los análisis. 
 - Que se integre de forma fluida con el ecosistema tidyverse.
 
-##
 
-### Dificultades para calcular legibilidad en español
-
-- Silabación: diptongos, triptongos, hiatos, vocales acentuadas, “y” vocálica.
-- Estructuras silábicas: grupos consonánticos, letras con diacríticos.
-- Ausencia de recursos libres fáciles de integrar en R.
 
 ##
 
-### Cómo abordé el problema en readabilityES
+### Lógica de silibificación
 
-- Motor de silabificación propio con reglas adaptadas al español.
-- Tokenización y segmentación de oraciones sin dependencias externas.
-- Funciones que devuelven métricas básicas y índices de legibilidad listos para análisis.
+- Identificación de vocales fuertes, débiles y vocales tildadas.
+- Detección de diptongos y triptongos (considerando reglas de hiato por tilde en í/ú).
+- Localización de núcleos vocálicos consecutivos.
+- Aplicación de reglas consonánticas:
+  - C+l / C+r no se separan.
+  - Decisiones VC–CV, VCC–CV según el clúster.
+- Segmentación final por núcleos y clústeres.
 
 ## 
 
@@ -391,18 +397,7 @@ inflesz(txt)
 
 
 
-## 
 
-```{r, echo=TRUE}
-
-df_txt <- data.frame(id_text = c("mercado_agricola", "parque_barrio"),
-                  text = c("El mercado agrícola local abrió hoy con precios estables, aunque los productores expresaron cierta incertidumbre por los recientes cambios climáticos. Aun así, la cosecha de la semana pasada mostró buenos rendimientos y despertó expectativas moderadamente optimistas.",
-         "El parque del barrio estaba lleno de familias que disfrutaban del sol. Los niños corrían entre los juegos mientras los adultos charlaban tranquilamente en los bancos."))
-
-readability_summary(df_txt) %>% 
-  mutate_if(is.numeric, round, 2)
-
-```
 
 ##
 
@@ -410,17 +405,60 @@ readability_summary(df_txt) %>%
 
 txt2 <- read_csv("textos.csv")
 
+readability_summary(txt2) %>% 
+  glimpse()
+
+
+
+
+
+```
+##
+
+```{r, echo=TRUE}
+readability_summary(txt2) %>% 
+  mutate_if(is.numeric, round, 2) %>% 
+  gt::gt()
+
+
+
+```
+
+##
+
+```{r, echo=TRUE}
+
+readability_summary(txt2) %>% 
+  summarise(Media_ifz = mean(inflesz_score),
+            Longitud_media = mean(n_words),
+            Longitud_minima = min(n_words),
+            Logitud_maxima = max(n_words))
+```
+
+
+##
+
+
+```{r}
+#| output-location: column
+#| echo: true
+#| classes: custom7030
+#| fig-width: 3
+#| fig-height: 5
+
+
+
+
 readability_summary(txt2) %>%
-  mutate(inflesz_category = fct_relevel(inflesz_category, 
-                                        "Muy fácil",
-                                        "Normal",
-                                        "Algo difícil",
-                                        "Muy difícil")) %>%
+  mutate(inflesz_category = 
+           fct_relevel(inflesz_category, 
+                       "Muy fácil",
+                       "Normal",
+                       "Algo difícil",
+                       "Muy difícil")) %>%
   ggplot(aes(x = inflesz_category)) +
   geom_bar(fill = "#023e8a") +
   theme_minimal()
-
-
 ```
 
 
@@ -429,9 +467,32 @@ readability_summary(txt2) %>%
 ### Próximos pasos
 
 - Incorporar análisis de vocabulario (frecuencia léxica).
-- Detección automática de pasivas y estructuras complejas.
 - Integración con anotadores gramaticales (udpipe).
+- Detección automática de estructuras sintácticas complejas.
 
-# Muchas gracias!
+# ¡Muchas gracias!
 
-- Links al paquete (GitHub) y contacto.
+
+:::: {.columns}
+
+::: {.column width="5%"}
+![](img/gh.png)
+![](img/link.png)
+:::
+
+::: {.column width="95%"}
+[JFormoso/readabilityes](https://github.com/JFormoso/readabilityes)
+
+[Jesica Formoso](https://www.linkedin.com/in/jesica-formoso-16ab4649)
+:::
+
+::::
+
+
+
+
+
+
+
+
+

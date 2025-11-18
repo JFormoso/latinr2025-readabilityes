@@ -368,3 +368,27 @@ $selection-bg: #26351c !default;
   word-break: normal;                 /* no corta dentro de la palabra */
   overflow-wrap: break-word;          /* solo rompe palabras muy largas si es necesario */
 }
+
+/* Contenedor general: alineado a la izquierda */
+.reveal .social-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* izquierda */
+  gap: 0rem;               /* menos espacio vertical */
+  margin-left: 0;            /* evita centrado */
+}
+
+/* Cada fila: icono + link */
+.reveal .social-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;               /* espacio horizontal entre icono y link */
+}
+
+/* Tamaño uniforme de iconos */
+.reveal .social-row img {
+  width: 24px;   /* un poco más chico para estética */
+  height: 24px;
+  object-fit: contain;
+}
